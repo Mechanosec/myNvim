@@ -5,7 +5,8 @@ return {
     require('lualine').setup({
       options = {
         theme = "dracula"
-      }
+      },
+      disabled_filetypes = {"neo-tree"}
     })
   end
 }
