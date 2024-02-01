@@ -26,8 +26,8 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-					["<S-tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+					["<tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+					["<S-tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = cmp.config.sources({
