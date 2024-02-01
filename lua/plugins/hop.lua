@@ -4,6 +4,6 @@ return {
     require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
   end,
   keys = {
-    {"<leader><leader>", "<cmd>HopWord<cr>", desc="Hop"}
+    {"<leader><leader>", "<cmd>HopWord<cr>", desc="HopWord"}
   }
 }
