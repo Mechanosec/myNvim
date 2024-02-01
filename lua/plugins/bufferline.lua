@@ -4,13 +4,22 @@ return {
     event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     keys = {
-      { "<Tab>",     ":BufferLineCycleNext<cr>", desc = "Next tab" },
-      { "<S-Tab>",   ":BufferLineCyclePrev<cr>", desc = "Prev tab" },
-      { "<leader>x", ":BufferClose<cr>",         desc = 'Close tab' }
+      { "<Tab>",     ":bnext<cr>",     desc = "Next tab" },
+      { "<S-Tab>",   ":bprevious<cr>", desc = "Prev tab" },
     },
     opts = {
       options = {
-        always_show_bufferline = true,
+        -- stylua: ignore
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(_, _, diag)
+          local signs = require("icons").signs
+          local ret = (diag.error and signs.Error .. diag.error .. " " or "")
+              .. (diag.warning and signs.Warn .. diag.warning or "")
+          return vim.trim(ret)
+        end,
         offsets = {
           {
             filetype = "neo-tree",
@@ -23,30 +32,5 @@ return {
         show_close_icon = false,
       },
     },
-    config = function()
-      require("bufferline").setup({
-        options = {
-          -- stylua: ignore
-          close_command = function(n) require("mini.bufremove").delete(n, false) end,
-          -- stylua: ignore
-          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
-          diagnostics = "nvim_lsp",
-          diagnostics_indicator = function(_, _, diag)
-            local signs = require("icons").signs
-            local ret = (diag.error and signs.Error .. diag.error .. " " or "")
-                .. (diag.warning and signs.Warn .. diag.warning or "")
-            return vim.trim(ret)
-          end,
-          offsets = {
-            {
-              filetype = "neo-tree",
-              text = "Neo-tree",
-              highlight = "Directory",
-              text_align = "left",
-            },
-          },
-        },
-      })
-    end,
   },
 }
