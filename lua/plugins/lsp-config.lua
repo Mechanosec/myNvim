@@ -37,7 +37,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "tsserver", "html", "prismals" },
+			ensure_installed = { "lua_ls", "tsserver", "html", "prismals", "yamlls" },
 			automatic_installation = true,
 		},
 
@@ -84,7 +84,7 @@ return {
 					)
 					vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { unpack(opts), desc = "Format" })
 
-					vim.keymap.set("n", "<leader>lt", ":TroubleToggle<cr>", { unpack(opts), desc = "Trouble" })
+					vim.keymap.set("n", "<leader>lt", ":TroubleToggle document_diagnostics<cr>", { unpack(opts), desc = "Trouble" })
 				end,
 			})
 
