@@ -4,8 +4,8 @@ return {
     event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     keys = {
-      { "<Tab>",     ":bnext<cr>",     desc = "Next tab" },
-      { "<S-Tab>",   ":bprevious<cr>", desc = "Prev tab" },
+      { "<Tab>",   ":bnext<cr>",     desc = "Next tab" },
+      { "<S-Tab>", ":bprevious<cr>", desc = "Prev tab" },
     },
     opts = {
       options = {
