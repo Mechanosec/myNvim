@@ -9,6 +9,7 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
 opt.relativenumber = true
+opt.laststatus = 2
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
