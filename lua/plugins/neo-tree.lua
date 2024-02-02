@@ -12,16 +12,25 @@ return {
 	config = function()
 		require("neo-tree").setup({
 			event_handlers = {
-			  {
-			    event = "file_opened",
-			    handler = function()
-			      -- auto close
-			      -- vimc.cmd("Neotree close")
-			      -- OR
-			      require("neo-tree.command").execute({ action = "close" })
-			    end,
-			  },
+				{
+					event = "file_opened",
+					handler = function()
+						-- auto close
+						-- vimc.cmd("Neotree close")
+						-- OR
+						require("neo-tree.command").execute({ action = "close" })
+					end,
+				},
 			},
+		})
+
+		vim.api.nvim_create_autocmd("TermClose", {
+			pattern = "*lazygit",
+			callback = function()
+				if package.loaded["neo-tree.sources.git_status"] then
+					require("neo-tree.sources.git_status").refresh()
+				end
+			end,
 		})
 	end,
 }
