@@ -70,4 +70,10 @@ return {
 			require("telescope").load_extension("ui-select")
 		end,
 	},
+	{
+		"Slotos/telescope-lsp-handlers.nvim",
+		config = function()
+			require("telescope-lsp-handlers").setup()
+		end,
+	},
 }
