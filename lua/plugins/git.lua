@@ -1,7 +1,13 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {},
+		opts = {
+			current_line_blame = true,
+			current_line_blame_opts = {
+				virt_text_pos = "eol",
+				delay = 400,
+			},
+		},
 	},
 	{
 		"kdheepak/lazygit.nvim",
