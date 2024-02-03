@@ -34,4 +34,3 @@ opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
 
 vim.opt.foldmethod = "indent"
-vim.cmd([[ set nofoldenable]])
