@@ -1,6 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		opts = {
 			current_line_blame = true,
 			current_line_blame_opts = {
@@ -11,7 +12,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		opts = {},
+		event = "VeryLazy",
 		keys = {
 			{ "<leader>gd", ":DiffviewOpen<cr>", desc = "Diffview open" },
 			{ "<leader>gc", ":DiffviewClose<cr>", desc = "Diffview close" },
@@ -21,6 +22,7 @@ return {
 	},
 	{
 		"kdheepak/lazygit.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
