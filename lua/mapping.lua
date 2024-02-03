@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-keymap.set("i", "jj", "<esc>", opts)
+-- keymap.set("i", "jj", "<esc>", opts)
 
 -- save
 keymap.set("n", "<leader>w", ":w<cr>", { unpack(opts), desc = "Save File" })
