@@ -32,3 +32,6 @@ opt.formatoptions = "jcroqlnt" -- tcqj
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
+
+vim.opt.foldmethod = "indent"
+vim.cmd([[ set nofoldenable]])

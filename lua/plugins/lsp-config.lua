@@ -38,7 +38,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "tsserver", "html", "prismals", "yamlls" },
+			ensure_installed = { "lua_ls", "tsserver", "html", "prismals", "yamlls", "marksman" },
 			automatic_installation = true,
 		},
 
