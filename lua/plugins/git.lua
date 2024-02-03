@@ -10,6 +10,16 @@ return {
 		},
 	},
 	{
+		"sindrets/diffview.nvim",
+		opts = {},
+		keys = {
+			{ "<leader>gd", ":DiffviewOpen<cr>", desc = "Diffview open" },
+			{ "<leader>gc", ":DiffviewClose<cr>", desc = "Diffview close" },
+			{ "<leader>gh", ":DiffviewFileHistory %<cr>", desc = "Current file history" },
+			{ "<leader>gH", ":DiffviewFileHistory<cr>", desc = "All files history" },
+		},
+	},
+	{
 		"kdheepak/lazygit.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
