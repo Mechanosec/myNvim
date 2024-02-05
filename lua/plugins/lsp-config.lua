@@ -89,6 +89,7 @@ return {
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "References" })
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { unpack(opts), desc = "Implementation" })
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { unpack(opts), desc = "Hover" })
+					vim.keymap.set("n", "gf", vim.diagnostic.open_float, { unpack(opts), desc = "Line diagnostic" })
 
 					vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { unpack(opts), desc = "Code action" })
 					vim.keymap.set(
