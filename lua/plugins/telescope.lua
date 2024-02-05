@@ -48,9 +48,9 @@ return {
 						n = {
 							["q"] = actions.close,
 						},
-						i = {
-							["<esc>"] = actions.close,
-						},
+						-- i = {
+						-- 	["<esc>"] = actions.close,
+						-- },
 					},
 				},
 			})
