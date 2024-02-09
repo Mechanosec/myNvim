@@ -12,7 +12,7 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 		config = function()
 			require("mason-nvim-dap").setup({
-				ensure_installed = { "node2" },
+				ensure_installed = { "node2", "js" },
 				handlers = {
 					function(config)
 						require("mason-nvim-dap").default_setup(config)
@@ -31,12 +31,27 @@ return {
 				layouts = {
 					{
 						elements = {
-							-- Elements can be strings or table with id and size keys.
-							{ id = "scopes", size = 0.7 },
-							{ id = "breakpoints", size = 0.3 },
+							{
+								id = "scopes",
+								size = 0.75,
+							},
+							{
+								id = "breakpoints",
+								size = 0.25,
+							},
 						},
-						size = 85,
 						position = "right",
+						size = 70,
+					},
+					{
+						elements = {
+							{
+								id = "repl",
+								size = 1,
+							},
+						},
+						position = "bottom",
+						size = 10,
 					},
 				},
 			})
