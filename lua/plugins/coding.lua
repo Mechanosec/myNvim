@@ -51,13 +51,19 @@ return {
 			local lspconfig = require("lspconfig")
 			mason_lspconfig.setup_handlers({
 				function(server_name)
-					lspconfig[server_name].setup({
-						capabilities = capabilities,
-						on_init = function(client)
-							client.server_capabilities.documentFormattingProvider = false
-							client.server_capabilities.documentFormattingRangeProvider = false
-						end,
-					})
+					if server_name == "tsserver" then
+						lspconfig.tsserver.setup({
+							capabilities = capabilities,
+							on_init = function(client)
+								client.server_capabilities.documentFormattingProvider = false
+								client.server_capabilities.documentFormattingRangeProvider = false
+							end,
+						})
+					else
+						lspconfig[server_name].setup({
+							capabilities = capabilities,
+						})
+					end
 				end,
 			})
 		end,
