@@ -25,12 +25,21 @@ return {
 
 			lsp_zero.on_attach(function(_, bufnr)
 				lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+				vim.keymap.set("n", "gf", vim.diagnostic.open_float, { buffer = bufnr, desc = "Line diagnostic" })
+				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+        -- stylua: ignore
+        vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature help" })
+				vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
+        -- stylua: ignore
+        vim.keymap.set("n", "<leader>lt", ":TroubleToggle document_diagnostics<cr>", { buffer = bufnr, desc = "Trouble" })
+				vim.keymap.set("n", "<leader>ln", ":Navbuddy<cr>", { buffer = bufnr, desc = "Nvigation" })
+
 				lsp_zero.buffer_autoformat()
 			end)
 
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
-				ensure_installed = { "tsserver", "lua_ls", "prismals" },
+				ensure_installed = { "lua_ls", "tsserver", "html", "cssls", "prismals", "yamlls", "marksman" },
 				handlers = {
 					lsp_zero.default_setup,
 					tsserver = function()
@@ -65,4 +74,10 @@ return {
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	{ "L3MON4D3/LuaSnip" },
+	{
+		"folke/trouble.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 }
