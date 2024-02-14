@@ -12,13 +12,13 @@ return {
 				sources = {
 					-- Web
 					formatting.prettier,
-					lint.eslint_d.with({
+					lint.eslint.with({
 						method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
 						condition = function(utils)
 							return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 						end,
 					}),
-					code_actions.eslint_d,
+					code_actions.eslint,
 					-- Lua
 					formatting.stylua,
 
