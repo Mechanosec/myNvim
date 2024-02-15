@@ -20,7 +20,6 @@ return {
 
 		local fcs = vim.opt.fillchars:get()
 
-		-- Stolen from Akinsho
 		local function get_fold(lnum)
 			if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then
 				return " "
@@ -29,7 +28,6 @@ return {
 		end
 
 		_G.get_statuscol = function()
-			-- return "%s%l " .. get_fold(vim.v.lnum) .. " "
 			return get_fold(vim.v.lnum) .. " %s%l "
 		end
 
