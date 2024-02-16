@@ -1,28 +1,30 @@
 return {
 	{
 		"echasnovski/mini.pairs",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
 			require("mini.pairs").setup()
 		end,
 	},
 	{
 		"echasnovski/mini.surround",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
-			require("mini.surround").setup()
+			require("mini.surround").setup({
+				search_method = "cover_or_next",
+			})
 		end,
 	},
 	{
 		"echasnovski/mini.comment",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
 			require("mini.comment").setup()
 		end,
 	},
 	{
 		"echasnovski/mini.bufremove",
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		keys = {
 			{
 				"<leader>x",
@@ -50,6 +52,7 @@ return {
 	},
 	{
 		"echasnovski/mini.indentscope",
+		event = "VeryLazy",
 		config = function()
 			require("mini.indentscope").setup()
 		end,
