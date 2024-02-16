@@ -56,7 +56,33 @@ return {
 			})
 		end,
 	},
-
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		keys = {
+			{ "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", "Explorer" },
+		},
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					file_browser = {
+						initial_mode = "normal",
+						hijack_netrw = true,
+						mappings = {
+							["n"] = {
+								["o"] = function()
+									vim.cmd("")
+								end,
+								["/"] = function()
+									vim.cmd("startisert")
+								end,
+							},
+						},
+					},
+				},
+			})
+			require("telescope").load_extension("file_browser")
+		end,
+	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
