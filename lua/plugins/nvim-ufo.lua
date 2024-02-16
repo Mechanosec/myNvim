@@ -6,7 +6,8 @@ return {
 	event = "VeryLazy",
 	opts = {
 		provider_selector = function()
-			return { "lsp", "indent" }
+			return { "treesitter", "indent" }
+			-- return { "lsp", "indent" }
 		end,
 	},
 
