@@ -56,7 +56,7 @@ return {
 				dapui.close({})
 			end
 
-			vim.keymap.set("n", "<leader>dU", dapui.toggle)
+			vim.keymap.set("n", "<leader>dU", dapui.toggle, { desc = "Toggle UI" })
 		end,
 	},
 }

@@ -14,7 +14,14 @@ return {
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },
-			rainbow = { enable = true },
+			rainbow = {
+				enable = true,
+				query = {
+					"rainbow-parens",
+					tsx = "rainbow-parens-react",
+					jsx = "rainbow-parens-react",
+				},
+			},
 			autotag = { enable = true },
 		})
 	end,
