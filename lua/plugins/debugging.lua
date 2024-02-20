@@ -4,6 +4,9 @@ return {
 		config = function()
 			local dap = require("dap")
 
+			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
+
 			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
 			vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
 		end,
