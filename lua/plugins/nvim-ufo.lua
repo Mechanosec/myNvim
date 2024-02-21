@@ -29,7 +29,7 @@ return {
 		end
 
 		_G.get_statuscol = function()
-			return get_fold(vim.v.lnum) .. " %s%l "
+			return get_fold(vim.v.lnum) .. " %s%{v:relnum?v:relnum:v:lnum} "
 		end
 
 		vim.o.statuscolumn = "%!v:lua.get_statuscol()"
