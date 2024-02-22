@@ -4,14 +4,18 @@ return {
 		"kevinhwang91/promise-async",
 	},
 	event = "VeryLazy",
-	opts = {
-		provider_selector = function()
-			-- return { "treesitter", "indent" }
-			return { "lsp", "indent" }
-		end,
-	},
 
 	init = function()
+		local ftMap = {
+			yaml = { "treesitter", "indent" },
+		}
+
+		require("ufo").setup({
+			provider_selector = function(_, filetype, _)
+				return ftMap[filetype] or { "lsp", "indent" }
+			end,
+		})
+
 		-- UFO folding
 		vim.o.foldcolumn = "1" -- '0' is not bad
 		vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
