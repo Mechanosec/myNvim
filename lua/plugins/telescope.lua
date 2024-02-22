@@ -59,7 +59,7 @@ return {
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		keys = {
-			{ "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", "Explorer" },
+			{ "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Explorer" },
 		},
 		config = function()
 			require("telescope").setup({
