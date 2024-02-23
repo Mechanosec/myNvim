@@ -1,5 +1,19 @@
 return {
 	{
+		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("mason-nvim-dap").setup({
+				ensure_installed = { "node2", "js" },
+				handlers = {
+					function(config)
+						require("mason-nvim-dap").default_setup(config)
+					end,
+				},
+			})
+		end,
+	},
+	{
 		"mfussenegger/nvim-dap",
 		config = function()
 			local dap = require("dap")
@@ -8,7 +22,10 @@ return {
 			vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
 
 			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
-			vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+			vim.keymap.set("n", "<leader>dD", function()
+				dap.disconnect({ terminateDebuggee = true })
+			end, { desc = "Disconnect" })
 		end,
 	},
 	{

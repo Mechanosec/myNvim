@@ -2,19 +2,6 @@ return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{
-		"jay-babu/mason-nvim-dap.nvim",
-		config = function()
-			require("mason-nvim-dap").setup({
-				ensure_installed = { "node2", "js" },
-				handlers = {
-					function(config)
-						require("mason-nvim-dap").default_setup(config)
-					end,
-				},
-			})
-		end,
-	},
-	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		config = function()
