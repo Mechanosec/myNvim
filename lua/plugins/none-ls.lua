@@ -1,6 +1,7 @@
 return {
 	{
-		"nvimtools/none-ls.nvim",
+		-- "nvimtools/none-ls.nvim",
+		"Mechanosec/null-ls.nvim",
 		config = function()
 			local null_ls = require("null-ls")
 
