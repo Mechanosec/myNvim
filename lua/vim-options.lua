@@ -8,7 +8,7 @@ vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
-opt.wrap = false
+opt.wrap = true
 opt.number = true
 opt.relativenumber = true
 opt.laststatus = 2
