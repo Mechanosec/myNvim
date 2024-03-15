@@ -1,19 +1,11 @@
 return {
 	{
-		"jay-babu/mason-nvim-dap.nvim",
-		config = function()
-			require("mason-nvim-dap").setup({
-				ensure_installed = { "node2", "js" },
-				handlers = {
-					function(config)
-						require("mason-nvim-dap").default_setup(config)
-					end,
-				},
-			})
-		end,
-	},
-	{
 		"mfussenegger/nvim-dap",
+		lazy = true,
+		dependencies = {
+
+			"jay-babu/mason-nvim-dap.nvim",
+		},
 		config = function()
 			local dap = require("dap")
 
@@ -25,6 +17,15 @@ return {
 			vim.keymap.set("n", "<leader>dD", function()
 				dap.disconnect({ terminateDebuggee = true })
 			end, { desc = "Disconnect" })
+
+			require("mason-nvim-dap").setup({
+				ensure_installed = { "node2", "js" },
+				handlers = {
+					function(config)
+						require("mason-nvim-dap").default_setup(config)
+					end,
+				},
+			})
 		end,
 	},
 	{
