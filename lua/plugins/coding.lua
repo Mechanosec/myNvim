@@ -51,6 +51,15 @@ return {
 							end,
 						})
 					end,
+					yamlls = function()
+						lspconfig.prismals.setup({
+							yaml = {
+								schemaStore = {
+									enable = true,
+								},
+							},
+						})
+					end,
 					tsserver = function()
 						lspconfig.tsserver.setup({
 							init_options = {
