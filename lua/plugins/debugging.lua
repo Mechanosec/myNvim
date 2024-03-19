@@ -1,11 +1,41 @@
 return {
 	{
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out", -- need run manually
+	},
+	{
+		"mxsdev/nvim-dap-vscode-js",
+		requires = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("dap-vscode-js").setup({
+				debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+				adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
+			})
+
+			for _, language in ipairs({ "typescript", "javascript" }) do
+				require("dap").configurations[language] = {
+					{
+						type = "pwa-node",
+						request = "launch",
+						name = "Launch file",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
+					},
+					{
+						type = "pwa-node",
+						request = "attach",
+						name = "Attach",
+						processId = require("dap.utils").pick_process,
+						cwd = "${workspaceFolder}",
+					},
+				}
+			end
+		end,
+	},
+	{
 		"mfussenegger/nvim-dap",
 		lazy = true,
-		dependencies = {
-
-			"jay-babu/mason-nvim-dap.nvim",
-		},
 		config = function()
 			local dap = require("dap")
 
@@ -17,20 +47,12 @@ return {
 			vim.keymap.set("n", "<leader>dD", function()
 				dap.disconnect({ terminateDebuggee = true })
 			end, { desc = "Disconnect" })
-
-			require("mason-nvim-dap").setup({
-				ensure_installed = { "node2", "js" },
-				handlers = {
-					function(config)
-						require("mason-nvim-dap").default_setup(config)
-					end,
-				},
-			})
 		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" },
+		requires = { "mfussenegger/nvim-dap" },
+		dependencies = { "nvim-neotest/nvim-nio" },
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 
