@@ -14,7 +14,7 @@ return {
 				config = function()
 					require("dap-vscode-js").setup({
 						debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-						adapters = { "pwa-node", "pwa-chrome" }, -- which adapters to register in nvim-dap
+						adapters = { "pwa-node", "pwa-chrome", "node" }, -- which adapters to register in nvim-dap
 					})
 				end,
 			},
@@ -44,8 +44,11 @@ return {
 						type = "pwa-node",
 						request = "attach",
 						name = "Attach",
-						processId = require("dap.utils").pick_process,
+						-- processId = require("dap.utils").pick_process,
+						protocol = "inspector",
+						program = "${file}",
 						cwd = "${workspaceFolder}",
+						sourceMaps = true,
 					},
 				}
 			end

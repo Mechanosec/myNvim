@@ -20,6 +20,11 @@ return {
 				end,
 				desc = "Live Grep",
 			},
+			{
+				"<leader>fb",
+				":Telescope buffers<cr>",
+				desc = "Live Grep",
+			},
 		},
 
 		config = function()
