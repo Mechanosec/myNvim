@@ -35,6 +35,10 @@ opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
 
+opt.spelllang = 'en_us'
+opt.spell = true
+
+
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"

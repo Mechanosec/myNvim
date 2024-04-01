@@ -9,8 +9,8 @@ return {
 		},
 		opts = {
 			options = {
-				mode = "tabs",
-				always_show_bufferline = false,
+				-- mode = "tabs",
+				always_show_bufferline = true,
         -- stylua: ignore
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
         -- stylua: ignore

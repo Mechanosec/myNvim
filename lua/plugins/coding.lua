@@ -22,11 +22,13 @@ return {
 				lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 				vim.keymap.set("n", "gf", vim.diagnostic.open_float, { buffer = bufnr, desc = "Line diagnostic" })
 				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-        -- stylua: ignore
+	       -- stylua: ignore
         vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature help" })
 				vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
-        -- stylua: ignore
-        vim.keymap.set("n", "<leader>lt", ":TroubleToggle document_diagnostics<cr>", { buffer = bufnr, desc = "Trouble" })
+	       -- stylua: ignore
+	      vim.keymap.set("n", "<leader>lR", ":LspRestart<cr>", { buffer = bufnr, desc = "Restart LSP" })
+	       -- stylua: ignore
+	      vim.keymap.set("n", "<leader>lt", ":TroubleToggle document_diagnostics<cr>", { buffer = bufnr, desc = "Trouble" })
 				vim.keymap.set("n", "<leader>ln", ":Navbuddy<cr>", { buffer = bufnr, desc = "Nvigation" })
 
 				lsp_zero.buffer_autoformat()
@@ -52,7 +54,7 @@ return {
 						})
 					end,
 					yamlls = function()
-						lspconfig.prismals.setup({
+						lspconfig.yamlls.setup({
 							yaml = {
 								schemaStore = {
 									enable = true,
