@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	event = "BufEnter",
 	dependencies = {
 		"HiPhish/nvim-ts-rainbow2",
 		"windwp/nvim-ts-autotag",
@@ -11,7 +12,7 @@ return {
 		configs.setup({
 			ensure_installed = { "jsdoc" },
 			auto_install = true,
-			sync_install = false,
+			sync_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 			rainbow = {

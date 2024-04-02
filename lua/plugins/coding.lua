@@ -138,7 +138,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "VeryLazy",
+		event = "BufEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = true,
 	},
