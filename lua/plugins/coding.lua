@@ -3,6 +3,7 @@ return {
 	{ "williamboman/mason-lspconfig.nvim" },
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		event = "BufEnter",
 		branch = "v3.x",
 		config = function()
 			local lsp_zero = require("lsp-zero")
@@ -104,13 +105,41 @@ return {
 			},
 		},
 	},
+	{ "hrsh7th/nvim-cmp", event = "InsertEnter" },
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
 	{ "L3MON4D3/LuaSnip" },
 	{
 		"folke/trouble.nvim",
-		event = "VeryLazy",
+		event = "BufEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		lazy = true,
+		opts = {
+			enable_autocmd = false,
+		},
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = "BufEnter",
+		config = function()
+			require("illuminate").configure({
+				delay = 200,
+				large_file_cutoff = 2000,
+				large_file_overrides = {
+					providers = { "lsp" },
+				},
+			})
+		end,
+	},
+	{
+		"folke/todo-comments.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = true,
 	},
 }
