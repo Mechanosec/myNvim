@@ -2,7 +2,7 @@ return {
 	{
 		"microsoft/vscode-js-debug",
 		opt = true,
-		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out", -- need run manually
+		build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	},
 	{
 		"mfussenegger/nvim-dap",
