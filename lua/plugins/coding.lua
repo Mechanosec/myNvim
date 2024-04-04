@@ -21,6 +21,7 @@ return {
 
 			lsp_zero.on_attach(function(_, bufnr)
 				lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+				lsp_zero.buffer_autoformat()
 				vim.keymap.set("n", "gf", vim.diagnostic.open_float, { buffer = bufnr, desc = "Line diagnostic" })
 				vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
 	       -- stylua: ignore
@@ -31,9 +32,9 @@ return {
 	       -- stylua: ignore
 	      vim.keymap.set("n", "<leader>lt", ":TroubleToggle document_diagnostics<cr>", { buffer = bufnr, desc = "Trouble" })
 				vim.keymap.set("n", "<leader>ln", ":Navbuddy<cr>", { buffer = bufnr, desc = "Nvigation" })
-
-				lsp_zero.buffer_autoformat()
 			end)
+
+			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
@@ -48,6 +49,7 @@ return {
 					}),
 					prismals = function()
 						lspconfig.prismals.setup({
+							single_file_support = false,
 							on_init = function(client)
 								client.server_capabilities.documentFormattingProvider = true
 								client.server_capabilities.documentFormattingRangeProvider = true
@@ -65,6 +67,8 @@ return {
 					end,
 					tsserver = function()
 						lspconfig.tsserver.setup({
+							capabilities = lsp_capabilities,
+							single_file_support = false,
 							init_options = {
 								preferences = {
 									importModuleSpecifierPreference = "relative",
