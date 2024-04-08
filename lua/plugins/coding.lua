@@ -49,7 +49,6 @@ return {
 					}),
 					prismals = function()
 						lspconfig.prismals.setup({
-							single_file_support = false,
 							on_init = function(client)
 								client.server_capabilities.documentFormattingProvider = true
 								client.server_capabilities.documentFormattingRangeProvider = true
@@ -67,8 +66,6 @@ return {
 					end,
 					tsserver = function()
 						lspconfig.tsserver.setup({
-							capabilities = lsp_capabilities,
-							single_file_support = false,
 							init_options = {
 								preferences = {
 									importModuleSpecifierPreference = "relative",
