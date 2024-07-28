@@ -24,6 +24,7 @@ require("mason-lspconfig").setup({
 		"prismals",
 		"dockerls",
 		"yamlls",
+		"tailwindcss",
 	},
 	handlers = {
 		function(server_name)
