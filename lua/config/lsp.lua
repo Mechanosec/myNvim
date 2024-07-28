@@ -14,7 +14,9 @@ local lspconf = require("lspconfig")
 lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+	vim.keymap.set("n", "<leader>cn", "<cmd>Navbuddy<cr>", { buffer = bufnr, desc = "Nvigation" })
 end)
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -25,6 +27,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"yamlls",
 		"tailwindcss",
+		"eslint",
 	},
 	handlers = {
 		function(server_name)
@@ -33,6 +36,7 @@ require("mason-lspconfig").setup({
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
 				end,
+				capabilities = lsp_capabilities,
 			})
 		end,
 		prismals = function()

@@ -18,6 +18,7 @@ return {
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
 			{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} },
 		},
@@ -78,9 +79,6 @@ return {
 				opts = { lsp = { auto_attach = true } },
 			},
 		},
-		keys = {
-			{ "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Nvigation" },
-		},
 	},
 	{
 		"folke/trouble.nvim",
@@ -96,26 +94,6 @@ return {
 				"<leader>xX",
 				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-			{
-				"<leader>xL",
-				"<cmd>Trouble loclist toggle<cr>",
-				desc = "Location List (Trouble)",
-			},
-			{
-				"<leader>xQ",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
 			},
 		},
 	},
