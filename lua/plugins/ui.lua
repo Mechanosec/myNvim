@@ -7,15 +7,9 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {},
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "+Find",
-			},
-		},
+		config = function()
+			require("config.which-key")
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -34,15 +28,33 @@ return {
 			})
 		end,
 	},
+	-- {
+	-- 	"akinsho/bufferline.nvim",
+	-- 	event = "VeryLazy",
+	-- 	version = "*",
+	-- 	dependencies = "nvim-tree/nvim-web-devicons",
+	-- 	keys = {
+	-- 		{ "<Tab>", ":BufferLineCycleNext<cr>" },
+	-- 		{ "<S-Tab>", ":BufferLineCyclePrev<cr>" },
+	-- 	},
+	-- 	opts = {},
+	-- },
 	{
-		"akinsho/bufferline.nvim",
-		lazy = false,
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		keys = {
-			{ "<Tab>", ":BufferLineCycleNext<cr>" },
-			{ "<S-Tab>", ":BufferLineCyclePrev<cr>" },
+		"romgrk/barbar.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
 		},
+		keys = {
+			{ "<Tab>", "<cmd>BufferNext<cr>" },
+			{ "<S-Tab>", "<cmd>BufferPrev<cr>" },
+			{ "<leader>bd", "<cmd>BufferClose<cr>" },
+		},
+
+		init = function()
+			vim.g.barbar_auto_setup = false
+		end,
 		opts = {},
 	},
 	{
@@ -80,4 +92,5 @@ return {
 			"TmuxNavigatePrevious",
 		},
 	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 }

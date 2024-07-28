@@ -1,8 +1,9 @@
 return {
 	{
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' },
-      keys = {
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
 			{
 				"<leader>ff",
 				function()
@@ -19,7 +20,7 @@ return {
 			},
 			{
 				"<leader>fb",
-				":Telescope buffers<cr>",
+				"<cmd>Telescope buffers<cr>",
 				desc = "Live Grep",
 			},
 		},
@@ -56,12 +57,12 @@ return {
 				},
 			})
 		end,
-       },
-       {
+	},
+	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		keys = {
-			{ "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Explorer" },
+			{ "<leader>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Explorer" },
 		},
 		config = function()
 			require("telescope").setup({

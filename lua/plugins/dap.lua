@@ -2,9 +2,9 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>dc", ':lua require"dap".continue()<CR>', desc = "Continue" },
-			{ "<Leader>db", ':lua require"dap".toggle_breakpoint()<CR>', desc = "Toggle breakpoint" },
-			{ "<Leader>du", ':lua require"dapui".toggle()<CR>', desc = "Toggle ui" },
+			{ "<leader>dc", '<cmd>lua require"dap".continue()<CR>', desc = "Continue" },
+			{ "<Leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', desc = "Toggle breakpoint" },
+			{ "<Leader>du", '<cmd>lua require"dapui".toggle()<CR>', desc = "Toggle ui" },
 		},
 		config = function()
 			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })

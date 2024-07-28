@@ -117,7 +117,7 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>cn", ":Navbuddy<cr>", desc = "Nvigation" },
+			{ "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Nvigation" },
 		},
 	},
 	{

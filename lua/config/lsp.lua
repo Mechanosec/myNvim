@@ -11,7 +11,7 @@ lsp_zero.set_sign_icons({
 
 local lspconf = require("lspconfig")
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
 end)
