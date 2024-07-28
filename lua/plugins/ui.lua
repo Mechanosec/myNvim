@@ -70,4 +70,15 @@ return {
 			"rcarriga/nvim-notify",
 		},
 	},
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+	},
 }
