@@ -47,6 +47,8 @@ return {
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+				json = { "prettier" },
+				yaml = { "prettier" },
 			},
 
 			format_on_save = {

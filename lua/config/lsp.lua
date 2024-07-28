@@ -22,6 +22,8 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"vtsls",
 		"prismals",
+		"dockerls",
+		"yamlls",
 	},
 	handlers = {
 		function(server_name)
