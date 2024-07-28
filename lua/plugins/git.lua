@@ -12,19 +12,17 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		keys = {
-			{ "<leader>gdd", ":DiffviewOpen<cr>", desc = "Diffview open" },
-			{ "<leader>gdc", ":DiffviewClose<cr>", desc = "Diffview close" },
-			{ "<leader>gdh", ":DiffviewFileHistory %<cr>", desc = "Current file history" },
-			{ "<leader>gdH", ":DiffviewFileHistory<cr>", desc = "All files history" },
+			{ "<leader>gdd", "<cmd>DiffviewOpen<cr>", desc = "Diffview open" },
+			{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Diffview close" },
+			{ "<leader>gdh", "<cmd>DiffviewFileHistory %<cr>", desc = "Current file history" },
+			{ "<leader>gdH", "<cmd>DiffviewFileHistory<cr>", desc = "All files history" },
 		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {
-			current_line_blame = true,
-			current_line_blame_opts = {
-				delay = 700,
-			},
+		keys = {
+			{ "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Blame line" },
 		},
+		opts = {},
 	},
 }
