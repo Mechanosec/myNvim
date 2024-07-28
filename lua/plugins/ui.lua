@@ -24,7 +24,6 @@ return {
 			require("lualine").setup({
 				options = {
 					globalstatus = true,
-					-- disabled_filetypes = { "neo-tree" },
 				},
 				sections = {
 					lualine_c = {
