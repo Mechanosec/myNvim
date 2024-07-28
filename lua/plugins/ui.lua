@@ -25,21 +25,23 @@ return {
 						"filename",
 						"lsp_progress",
 					},
+					lualine_x = {
+						{
+							function()
+								local recording_register = vim.fn.reg_recording()
+								if recording_register == "" then
+									return ""
+								else
+									return "Recording @" .. recording_register
+								end
+							end,
+							color = { fg = "green" },
+						},
+					},
 				},
 			})
 		end,
 	},
-	-- {
-	-- 	"akinsho/bufferline.nvim",
-	-- 	event = "VeryLazy",
-	-- 	version = "*",
-	-- 	dependencies = "nvim-tree/nvim-web-devicons",
-	-- 	keys = {
-	-- 		{ "<Tab>", ":BufferLineCycleNext<cr>" },
-	-- 		{ "<S-Tab>", ":BufferLineCyclePrev<cr>" },
-	-- 	},
-	-- 	opts = {},
-	-- },
 	{
 		"romgrk/barbar.nvim",
 		event = "VeryLazy",
