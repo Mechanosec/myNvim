@@ -86,4 +86,5 @@ return {
 			require("telescope").load_extension("file_browser")
 		end,
 	},
+	{ "Slotos/telescope-lsp-handlers.nvim", opts = {} },
 }
