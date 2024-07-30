@@ -16,6 +16,15 @@ return {
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local dap = require("dap")
+			local dap_status = function()
+				if dap.session() then
+					return " " .. dap.status()
+				else
+					return " Inactive"
+				end
+			end
+
 			require("lualine").setup({
 				options = {
 					globalstatus = true,
@@ -38,6 +47,7 @@ return {
 							color = { fg = "green" },
 						},
 					},
+					lualine_y = { dap_status },
 				},
 			})
 		end,
