@@ -53,6 +53,7 @@ return {
 			{ "<Tab>", "<cmd>BufferNext<cr>" },
 			{ "<S-Tab>", "<cmd>BufferPrev<cr>" },
 			{ "<leader>bd", "<cmd>BufferClose<cr>" },
+			{ "<leader>bD", "<cmd>BufferCloseAllButCurrent<cr>" },
 		},
 
 		init = function()
