@@ -9,7 +9,7 @@ vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
-opt.wrap = true
+opt.wrap = false
 opt.number = true
 opt.relativenumber = true
 opt.laststatus = 2
@@ -39,6 +39,6 @@ opt.splitright = true -- Put new windows right of current
 opt.spelllang = "en_us"
 opt.spell = true
 
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- mkdir -p ~/.vim/undodir
+vim.o.undodir = vim.fn.expand("~/.vim/undodir")
+vim.o.undofile = true
