@@ -15,6 +15,8 @@ lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
 	vim.keymap.set("n", "<leader>cn", "<cmd>Navbuddy<cr>", { buffer = bufnr, desc = "Nvigation" })
+	vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+	vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { buffer = bufnr, desc = "Show diagnostics" })
 end)
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
