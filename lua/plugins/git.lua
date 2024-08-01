@@ -8,7 +8,47 @@ return {
 			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
-	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		config = function()
+			require("git-conflict").setup({
+				default_mappings = false,
+			})
+
+			vim.keymap.set(
+				"n",
+				"<leader>gco",
+				"<cmd>GitConflictChooseOurs<cr>",
+				{ desc = "Select the current changes" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>gct",
+				"<cmd>GitConflictChooseTheirs<cr>",
+				{ desc = "Select the incoming changes" }
+			)
+			vim.keymap.set("n", "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Select both changes" })
+			vim.keymap.set(
+				"n",
+				"<leader>gcn",
+				"<cmd>GitConflictNextConflict<cr>",
+				{ desc = "Move to the next conflict" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>gcn",
+				"<cmd>GitConflictNextConflict<cr>",
+				{ desc = "Move to the next conflict" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>gcp",
+				"<cmd>GitConflictPrevConflict<cr>",
+				{ desc = "Move to the previous conflict" }
+			)
+		end,
+	},
 	{
 		"sindrets/diffview.nvim",
 		keys = {
