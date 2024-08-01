@@ -92,7 +92,7 @@ return {
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			{ "rcarriga/nvim-notify", opts = { timeout = 1 } },
+			{ "rcarriga/nvim-notify", opts = { timeout = 500, render = "wrapped-compact" } },
 		},
 	},
 	{
