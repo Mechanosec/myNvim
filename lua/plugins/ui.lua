@@ -73,7 +73,8 @@ return {
 	},
 	{
 		"b0o/incline.nvim",
-		event = "VeryLazy",
+		event = "BufReadPre",
+		priority = 1200,
 		config = function()
 			require("incline").setup({
 				highlight = {
