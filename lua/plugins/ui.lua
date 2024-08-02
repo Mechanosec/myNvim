@@ -59,6 +59,37 @@ return {
 			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
 			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
 		},
+		opts = function()
+			local function mark_inactive_buffers(commit_a, commit_b)
+				local cmd = string.format("git diff --name-only %s %s", commit_a, commit_b)
+				local handle = io.popen(cmd)
+				local result = handle:read("*a")
+				handle:close()
+
+				local changed_files = {}
+				for file in result:gmatch("[^\r\n]+") do
+					changed_files[file] = true
+				end
+
+				for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buffer), ":.")
+					if not changed_files[filename] then
+						vim.bo[buffer].modifiable = false
+						vim.bo[buffer].readonly = true
+					else
+						vim.bo[buffer].modifiable = true
+						vim.bo[buffer].readonly = false
+					end
+				end
+			end
+
+			vim.api.nvim_create_user_command("MarkInactiveBuffers", function(opts)
+				local args = vim.split(opts.args, " ")
+				mark_inactive_buffers(args[1], args[2])
+			end, { nargs = 2 })
+
+			require("barbar").setup({})
+		end,
 		keys = {
 			{ "<Tab>", "<cmd>BufferNext<cr>" },
 			{ "<S-Tab>", "<cmd>BufferPrev<cr>" },
@@ -69,7 +100,6 @@ return {
 		init = function()
 			vim.g.barbar_auto_setup = false
 		end,
-		opts = {},
 	},
 	{
 		"b0o/incline.nvim",
