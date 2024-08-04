@@ -153,12 +153,14 @@ return {
 	},
 	{
 		"nvim-neotest/neotest",
+		-- event = "VeryLazy",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-neotest/neotest-jest",
+			"Mechanosec/neotest-jest",
+			-- "nvim-neotest/neotest-jest",
 		},
 		config = function()
 			local neotest = require("neotest")
@@ -166,7 +168,7 @@ return {
 			neotest.setup({
 				adapters = {
 					require("neotest-jest")({
-						jestCommand = "npm test --",
+						jestCommand = "npm test -- --runInBand",
 						jestConfigFile = "jest.config.ts",
 						env = { CI = true },
 						cwd = function(path)
@@ -197,8 +199,16 @@ return {
 				function()
 					require("neotest").run.run()
 				end,
-				desc = "Run Nearest",
+				desc = "Run Test",
 			},
+			{
+				"<leader>tR",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				desc = "Run Test With Debugger",
+			},
+
 			{
 				"<leader>tl",
 				function()

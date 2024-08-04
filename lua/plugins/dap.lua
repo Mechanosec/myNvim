@@ -17,14 +17,14 @@ return {
 			for _, language in ipairs({ "typescript", "javascript" }) do
 				dap.configurations[language] = {
 					{
-						type = "node2",
+						type = "pwa-node",
 						request = "launch",
 						name = "Launch file",
 						program = "${file}",
 						cwd = "${workspaceFolder}",
 					},
 					{
-						type = "node2",
+						type = "pwa-node",
 						name = "node attach",
 						request = "attach",
 						program = "${file}",
@@ -35,10 +35,17 @@ return {
 				}
 			end
 
-			dap.adapters.node2 = {
-				type = "executable",
-				command = "node-debug2-adapter",
-				args = {},
+			dap.adapters["pwa-node"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					command = "node",
+					args = {
+						vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+						"${port}",
+					},
+				},
 			}
 		end,
 	},
