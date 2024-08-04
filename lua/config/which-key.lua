@@ -7,4 +7,5 @@ wk.add({
 	{ "<leader>g", group = "+Git" }, -- group
 	{ "<leader>b", group = "+Buffer" }, -- group
 	{ "<leader>x", group = "+Trouble" }, -- group
+	{ "<leader>t", group = "+Test" }, -- group
 })

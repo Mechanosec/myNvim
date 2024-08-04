@@ -168,7 +168,7 @@ return {
 			neotest.setup({
 				adapters = {
 					require("neotest-jest")({
-						jestCommand = "npm test -- --runInBand",
+						jestCommand = "npm test --",
 						jestConfigFile = "jest.config.ts",
 						env = { CI = true },
 						cwd = function(path)
@@ -179,7 +179,6 @@ return {
 			})
 		end,
 		keys = {
-			{ "<leader>t", "", desc = "+test" },
 			{
 				"<leader>tt",
 				function()
