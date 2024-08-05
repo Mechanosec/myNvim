@@ -15,4 +15,14 @@ configs.setup({
 		},
 	},
 	autotag = { enable = true },
+	fold = {
+		enable = true,
+	},
 })
+
+-- Use Treesitter for folding
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Optionally, set the default fold level to start unfolded
+vim.opt.foldlevel = 99
