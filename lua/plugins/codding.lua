@@ -239,4 +239,12 @@ return {
 			},
 		},
 	},
+	{
+		"folke/todo-comments.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{ "<leader>xT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+		},
+	},
 }
