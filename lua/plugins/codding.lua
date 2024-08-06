@@ -8,7 +8,7 @@ return {
 			require("config.lsp")
 		end,
 	},
-	{ "neovim/nvim-lspconfig", cmd = "LspInfo", event = { "BufReadPre", "BufNewFile" } },
+	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{
 		"hrsh7th/nvim-cmp",
