@@ -121,6 +121,13 @@ return {
 				end,
 				desc = "Widgets",
 			},
+			{
+				"<Leader>du",
+				function()
+					require("dapui").toggle()
+				end,
+				desc = "Toggle ui",
+			},
 		},
 		config = function()
 			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
