@@ -1,10 +1,6 @@
 return {
-	{
-		"williamboman/mason.nvim",
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-	},
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
@@ -12,9 +8,7 @@ return {
 			require("config.lsp")
 		end,
 	},
-	{
-		"neovim/nvim-lspconfig",
-	},
+	{ "neovim/nvim-lspconfig", cmd = "LspInfo", event = { "BufReadPre", "BufNewFile" } },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{
 		"hrsh7th/nvim-cmp",
@@ -235,5 +229,12 @@ return {
 		keys = {
 			{ "<leader>xT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
 		},
+	},
+	{
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {},
 	},
 }
