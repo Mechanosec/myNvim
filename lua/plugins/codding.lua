@@ -60,6 +60,7 @@ return {
 					"MunifTanjim/nui.nvim",
 				},
 				opts = { lsp = { auto_attach = true } },
+				keys = { { "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Nvigation" } },
 			},
 		},
 	},
@@ -235,6 +236,11 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		opts = {},
+		opts = {
+			on_rename = function(old_name, new_name)
+				print("Renaming from " .. old_name .. " to " .. new_name)
+				vim.cmd("silent! write")
+			end,
+		},
 	},
 }

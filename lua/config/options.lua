@@ -42,3 +42,4 @@ opt.spell = true
 -- mkdir -p ~/.vim/undodir
 vim.o.undodir = vim.fn.expand("~/.vim/undodir")
 vim.o.undofile = true
+vim.o.hidden = true

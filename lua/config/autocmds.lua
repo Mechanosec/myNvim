@@ -3,6 +3,7 @@ local function augroup(name)
 end
 
 vim.api.nvim_create_autocmd("BufWritePost", {
+	group = augroup("prisma_generate"),
 	pattern = "schema.prisma",
 	callback = function()
 		-- Асинхронное выполнение prisma generate
