@@ -15,43 +15,20 @@ return {
 			require("git-conflict").setup({
 				default_mappings = false,
 			})
-
-			vim.keymap.set(
-				"n",
-				"<leader>gco",
-				"<cmd>GitConflictChooseOurs<cr>",
-				{ desc = "Select the current changes" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>gct",
-				"<cmd>GitConflictChooseTheirs<cr>",
-				{ desc = "Select the incoming changes" }
-			)
-			vim.keymap.set("n", "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Select both changes" })
-			vim.keymap.set(
-				"n",
-				"<leader>gcn",
-				"<cmd>GitConflictNextConflict<cr>",
-				{ desc = "Move to the next conflict" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>gcn",
-				"<cmd>GitConflictNextConflict<cr>",
-				{ desc = "Move to the next conflict" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>gcp",
-				"<cmd>GitConflictPrevConflict<cr>",
-				{ desc = "Move to the previous conflict" }
-			)
 		end,
+		keys = {
+			{ "<leader>gc", "", desc = "Git conflict" },
+			{ "<leader>gco", "<cmd>GitConflictChooseOurs<cr>", desc = "Select the current changes" },
+			{ "<leader>gct", "<cmd>GitConflictChooseTheirs<cr>", desc = "Select the incoming changes" },
+			{ "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", desc = "Select both changes" },
+			{ "<leader>gcn", "<cmd>GitConflictNextConflict<cr>", desc = "Move to the next conflict" },
+			{ "<leader>gcp", "<cmd>GitConflictPrevConflict<cr>", desc = "Move to the previous conflict" },
+		},
 	},
 	{
 		"sindrets/diffview.nvim",
 		keys = {
+			{ "<leader>gd", "", desc = "Diffview" },
 			{ "<leader>gdd", "<cmd>DiffviewOpen<cr>", desc = "Diffview open" },
 			{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Diffview close" },
 			{ "<leader>gdh", "<cmd>DiffviewFileHistory %<cr>", desc = "Current file history" },
