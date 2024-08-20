@@ -60,47 +60,89 @@ return {
 			},
 		},
 		config = function()
-			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapStopped", { text = "->", texthl = "", linehl = "", numhl = "" })
-
 			local ok, dap = pcall(require, "dap")
 			if not ok then
 				return
 			end
+			dap.configurations.typescript = {
+				{
+					type = "node2",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
 
-			dap.adapters["pwa-node"] = {
-				type = "server",
-				host = "localhost",
-				port = "${port}",
-				executable = {
-					command = "node",
-					args = {
-						vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
-						"${port}",
-					},
+				{
+					type = "node2",
+					name = "node attach",
+					request = "attach",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
 				},
 			}
+			dap.adapters.node2 = {
+				type = "executable",
+				command = "node-debug2-adapter",
+				args = {},
+			}
 
-			for _, language in ipairs({ "typescript", "javascript" }) do
-				dap.configurations[language] = {
-					{
-						type = "pwa-node",
-						request = "launch",
-						name = "Launch file",
-						program = "${file}",
-						cwd = "${workspaceFolder}",
-					},
-					{
-						type = "pwa-node",
-						name = "node attach",
-						request = "attach",
-						program = "${file}",
-						cwd = vim.fn.getcwd(),
-						sourceMaps = true,
-						protocol = "inspector",
-					},
-				}
-			end
+			-- dap.adapters["pwa-node"] = {
+			-- 	type = "server",
+			-- 	host = "localhost",
+			-- 	port = "${port}",
+			-- 	executable = {
+			-- 		command = "node",
+			-- 		args = {
+			-- 			vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+			-- 			"${port}",
+			-- 		},
+			-- 	},
+			-- }
+			--
+			-- for _, language in ipairs({ "typescript", "javascript" }) do
+			-- 	dap.configurations[language] = {
+			-- 		{
+			-- 			type = "pwa-node",
+			-- 			request = "launch",
+			-- 			name = "Launch file",
+			-- 			program = "${file}",
+			-- 			cwd = "${workspaceFolder}",
+			-- 		},
+			-- 		{
+			-- 			type = "pwa-node",
+			-- 			name = "node attach",
+			-- 			request = "attach",
+			-- 			program = "${file}",
+			-- 			cwd = vim.fn.getcwd(),
+			-- 			sourceMaps = true,
+			-- 			protocol = "inspector",
+			-- 		},
+			-- 	}
+			-- end
+
+			vim.fn.sign_define(
+				"DapBreakpoint",
+				{ text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+			)
+			vim.fn.sign_define(
+				"DapBreakpointCondition",
+				{ text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+			)
+			vim.fn.sign_define(
+				"DapBreakpointRejected",
+				{ text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+			)
+			vim.fn.sign_define(
+				"DapLogPoint",
+				{ text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
+			)
+			vim.fn.sign_define(
+				"DapStopped",
+				{ text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
+			)
 		end,
 	},
 	{
@@ -132,7 +174,7 @@ return {
 							},
 						},
 						position = "bottom",
-						size = 10,
+						size = 5,
 					},
 				},
 			})
