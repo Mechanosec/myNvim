@@ -2,25 +2,26 @@ local ok, dap = pcall(require, "dap")
 if not ok then
 	return
 end
-dap.configurations.typescript = {
-	{
-		type = "node2",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		cwd = "${workspaceFolder}",
-	},
-
-	{
-		type = "node2",
-		name = "node attach",
-		request = "attach",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
-	},
-}
+for _, language in ipairs({ "typescript", "javascript" }) do
+	dap.configurations[language] = {
+		{
+			type = "node2",
+			request = "launch",
+			name = "Launch file",
+			program = "${file}",
+			cwd = "${workspaceFolder}",
+		},
+		{
+			type = "node2",
+			name = "node attach",
+			request = "attach",
+			program = "${file}",
+			cwd = vim.fn.getcwd(),
+			sourceMaps = true,
+			protocol = "inspector",
+		},
+	}
+end
 dap.adapters.node2 = {
 	type = "executable",
 	command = "node-debug2-adapter",

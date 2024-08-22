@@ -3,6 +3,13 @@ return {
 		"mfussenegger/nvim-dap",
 		keys = {
 			{
+				"<leader>de",
+				function()
+					require("dapui").eval()
+				end,
+				desc = "Eval",
+			},
+			{
 				"<leader>db",
 				function()
 					require("dap").toggle_breakpoint()
@@ -69,6 +76,7 @@ return {
 			local dapui = require("dapui")
 
 			dapui.setup({
+				expand_lines = false,
 				layouts = {
 					{
 						elements = {
