@@ -107,10 +107,10 @@ return {
 		end,
 		dependencies = {
 			"nvim-neotest/nvim-nio",
-			{
-				"theHamsta/nvim-dap-virtual-text",
-				opts = {},
-			},
+			-- {
+			-- 	"theHamsta/nvim-dap-virtual-text",
+			-- 	opts = {},
+			-- },
 		},
 	},
 }
