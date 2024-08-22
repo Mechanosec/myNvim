@@ -10,6 +10,7 @@ return {
 	},
 	{
 		"akinsho/git-conflict.nvim",
+		event = "BufRead",
 		version = "*",
 		config = function()
 			require("git-conflict").setup({
