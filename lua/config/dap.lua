@@ -14,7 +14,7 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 		},
 		{
 			type = "pwa-node",
-			name = "node attach2",
+			name = "Node attach",
 			request = "attach",
 			program = "${file}",
 			cwd = vim.fn.getcwd(),
