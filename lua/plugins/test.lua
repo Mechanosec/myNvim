@@ -7,7 +7,6 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"Mechanosec/neotest-jest",
-		-- "nvim-neotest/neotest-jest",
 	},
 	config = function()
 		require("config.neotest")
