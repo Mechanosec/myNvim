@@ -2,18 +2,19 @@ local ok, dap = pcall(require, "dap")
 if not ok then
 	return
 end
+
 for _, language in ipairs({ "typescript", "javascript" }) do
 	dap.configurations[language] = {
 		{
-			type = "node2",
+			type = "pwa-node",
 			request = "launch",
 			name = "Launch file",
 			program = "${file}",
 			cwd = "${workspaceFolder}",
 		},
 		{
-			type = "node2",
-			name = "node attach",
+			type = "pwa-node",
+			name = "node attach2",
 			request = "attach",
 			program = "${file}",
 			cwd = vim.fn.getcwd(),
@@ -22,11 +23,6 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 		},
 	}
 end
-dap.adapters.node2 = {
-	type = "executable",
-	command = "node-debug2-adapter",
-	args = {},
-}
 
 vim.api.nvim_set_hl(0, "blue", { fg = "#3d59a1" })
 vim.api.nvim_set_hl(0, "green", { fg = "#9ece6a" })

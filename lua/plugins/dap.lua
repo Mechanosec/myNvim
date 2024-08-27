@@ -1,6 +1,22 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		dependencies = {
+			{
+				"microsoft/vscode-js-debug",
+				build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+				version = "1.*",
+			},
+			{
+				"mxsdev/nvim-dap-vscode-js",
+				config = function()
+					require("dap-vscode-js").setup({
+						debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+						adapters = { "pwa-node" },
+					})
+				end,
+			},
+		},
 		keys = {
 			{
 				"<leader>de",
