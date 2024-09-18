@@ -88,8 +88,16 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			-- {
+			-- 	"theHamsta/nvim-dap-virtual-text",
+			-- 	opts = {},
+			-- },
+		},
 		config = function()
 			local dapui = require("dapui")
+			local dap = require("dap")
 
 			dapui.setup({
 				expand_lines = false,
@@ -120,13 +128,16 @@ return {
 					},
 				},
 			})
+
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open({})
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close({})
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close({})
+			end
 		end,
-		dependencies = {
-			"nvim-neotest/nvim-nio",
-			-- {
-			-- 	"theHamsta/nvim-dap-virtual-text",
-			-- 	opts = {},
-			-- },
-		},
 	},
 }

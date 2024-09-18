@@ -10,8 +10,11 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
-		lazy = true,
-		opts = {},
+		opts = {
+			select = {
+				backend = { "builtin", "telescope", "fzf", "fzf_lua", "nui" },
+			},
+		},
 	},
 	{
 		"folke/which-key.nvim",
