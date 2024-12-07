@@ -68,7 +68,15 @@ return {
 			require("telescope").setup({
 				extensions = {
 					file_browser = {
+						layout_strategy = "horizontal", -- or "vertical"
+						layout_config = {
+							width = 0.6, -- 80% of screen width
+							height = 0.6, -- 60% of screen height
+							prompt_position = "top", -- Place prompt at the top
+							preview_cutoff = 120, -- Disable preview if window is too narrow
+						},
 						initial_mode = "normal",
+						previewer = false,
 						hijack_netrw = true,
 						mappings = {
 							["n"] = {
